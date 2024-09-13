@@ -1,0 +1,154 @@
+import matplotlib.pyplot as plt
+import random
+import math
+
+fig = plt.figure()
+zansa = []
+n_po = []
+
+for n in range(1000, 10001, 1000):
+    x_co = [random.random() for i in range(n)]
+    y_co = [random.random() for i in range(n)]
+
+    n_inside = 0
+    n_outside = 0
+    vol = []
+
+    for i in range(n):
+        if math.sqrt(x_co[i] ** 2 + y_co[i] ** 2) <= 1:
+            n_inside += 1
+            vol.append(10)
+        else:
+            n_outside += 1
+            vol.append(2)
+
+    s = 4 * (n_inside / n)
+    zansa.append(abs(math.pi - s) / math.pi)
+    n_po.append(n)
+    
+    if n == 1000:
+        c1 = plt.Circle((0, 0), radius=1, fc="None", ec="r", linewidth=2, color="black")
+        ax = plt.gca()
+        ax.add_patch(c1)
+        plt.axis("scaled")
+        plt.xlim(0, 1)
+        plt.ylim(0, 1)
+        plt.xlabel("x")
+        plt.ylabel("y")
+        plt.scatter(x_co, y_co, s=vol, marker=".", alpha=0.2, color="green")
+        plt.title(f"iter:{n}, pi:{s}")
+        plt.show()
+        
+    elif n == 2000:
+        c1 = plt.Circle((0, 0), radius=1, fc="None", ec="r", linewidth=2, color="black")
+        ax = plt.gca()
+        ax.add_patch(c1)
+        plt.axis("scaled")
+        plt.xlim(0, 1)
+        plt.ylim(0, 1)
+        plt.xlabel("x")
+        plt.ylabel("y")
+        plt.scatter(x_co, y_co, s=vol, marker=".", alpha=0.2, color="green")
+        plt.title(f"iter:{n}, pi:{s}")
+        plt.show()
+
+    elif n == 3000:
+        c1 = plt.Circle((0, 0), radius=1, fc="None", ec="r", linewidth=2, color="black")
+        ax = plt.gca()
+        ax.add_patch(c1)
+        plt.axis("scaled")
+        plt.xlim(0, 1)
+        plt.ylim(0, 1)
+        plt.xlabel("x")
+        plt.ylabel("y")
+        plt.scatter(x_co, y_co, s=vol, marker=".", alpha=0.2, color="green")
+        plt.title(f"iter:{n}, pi:{s}")
+        plt.show()
+        
+    elif n == 4000:
+        c1 = plt.Circle((0, 0), radius=1, fc="None", ec="r", linewidth=2, color="black")
+        ax = plt.gca()
+        ax.add_patch(c1)
+        plt.axis("scaled")
+        plt.xlim(0, 1)
+        plt.ylim(0, 1)
+        plt.xlabel("x")
+        plt.ylabel("y")
+        plt.scatter(x_co, y_co, s=vol, marker=".", alpha=0.2, color="green")
+        plt.title(f"iter:{n}, pi:{s}")
+        plt.show()
+        
+    elif n == 6000:
+        c1 = plt.Circle((0, 0), radius=1, fc="None", ec="r", linewidth=2, color="black")
+        ax = plt.gca()
+        ax.add_patch(c1)
+        plt.axis("scaled")
+        plt.xlim(0, 1)
+        plt.ylim(0, 1)
+        plt.xlabel("x")
+        plt.ylabel("y")
+        plt.scatter(x_co, y_co, s=vol, marker=".", alpha=0.2, color="green")
+        plt.title(f"iter:{n}, pi:{s}")
+        plt.show()
+
+    elif n == 7000:
+        c1 = plt.Circle((0, 0), radius=1, fc="None", ec="r", linewidth=2, color="black")
+        ax = plt.gca()
+        ax.add_patch(c1)
+        plt.axis("scaled")
+        plt.xlim(0, 1)
+        plt.ylim(0, 1)
+        plt.xlabel("x")
+        plt.ylabel("y")
+        plt.scatter(x_co, y_co, s=vol, marker=".", alpha=0.2, color="green")
+        plt.title(f"iter:{n}, pi:{s}")
+        plt.show()
+
+    elif n == 8000:
+        c1 = plt.Circle((0, 0), radius=1, fc="None", ec="r", linewidth=2, color="black")
+        ax = plt.gca()
+        ax.add_patch(c1)
+        plt.axis("scaled")
+        plt.xlim(0, 1)
+        plt.ylim(0, 1)
+        plt.xlabel("x")
+        plt.ylabel("y")
+        plt.scatter(x_co, y_co, s=vol, marker=".", alpha=0.2, color="green")
+        plt.title(f"iter:{n}, pi:{s}")
+        plt.show()
+
+    elif n == 9000:
+        c1 = plt.Circle((0, 0), radius=1, fc="None", ec="r", linewidth=2, color="black")
+        ax = plt.gca()
+        ax.add_patch(c1)
+        plt.axis("scaled")
+        plt.xlim(0, 1)
+        plt.ylim(0, 1)
+        plt.xlabel("x")
+        plt.ylabel("y")
+        plt.scatter(x_co, y_co, s=vol, marker=".", alpha=0.2, color="green")
+        plt.title(f"iter:{n}, pi:{s}")
+        plt.show()
+
+
+
+    elif n == 10000:
+        c1 = plt.Circle((0, 0), radius=1, fc="None", ec="r", linewidth=2, color="black")
+        ax = plt.gca()
+        ax.add_patch(c1)
+        plt.axis("scaled")
+        plt.xlim(0, 1)
+        plt.ylim(0, 1)
+        plt.xlabel("x")
+        plt.ylabel("y")
+        plt.scatter(x_co, y_co, s=vol, marker=".", alpha=0.2, color="green")
+        plt.title(f"iter:{n}, pi={s}")
+        plt.show()
+
+plt.plot(n_po, zansa, marker = "o")
+plt.title("Residual History of Monte Carlo Method")
+plt.xlabel("Number of Points")
+plt.ylabel("Residual")
+plt.yscale("log")
+
+plt.show()
