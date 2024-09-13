@@ -1,0 +1,70 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import time
+
+nai_sum = 0
+gyve_sum = 0
+gygy_sum = 0
+naiseki = []
+gyovec = []
+gyogyo = []
+shikou = 5
+zigenn = []
+
+for n in range(100, 501, 100):
+    zigenn.append(n)
+    gyo1 = (np.random.rand(n*n) * 10+1).reshape(n, n).astype(int)
+    gyo2 = (np.random.rand(n*n) * 10+1).reshape(n, n).astype(int)
+    vec1 = (np.random.rand(n) * 10+1).astype(int)
+    vec2 = (np.random.rand(n) * 10+1).astype(int)
+
+    #ベクトルの内積の計算
+    for i in range(shikou):
+        start_t = time.time()
+        
+        ans = np.dot(vec1, vec2)   
+        
+        end_t = time.time()        
+        elapsed_t = end_t - start_t
+        #print(f"elapsed time: {elapsed_t}")
+
+        nai_sum += elapsed_t
+
+    #行列とベクトルの掛け算
+    for i in range(shikou):
+        start_t = time.time()
+        
+        ans = gyo1@vec1   
+        
+        end_t = time.time()        
+        elapsed_t = end_t - start_t
+        #print(f"elapsed time: {elapsed_t}")
+
+        gyve_sum += elapsed_t
+
+    #行列と行列の掛け算
+    for i in range(shikou):
+        start_t = time.time()
+        
+        ans = np.dot(gyo1, gyo2)   
+        
+        end_t = time.time()        
+        elapsed_t = end_t - start_t
+        #print(f"elapsed time: {elapsed_t}")
+
+        gygy_sum += elapsed_t
+
+    naiseki.append(nai_sum/shikou)
+    gyovec.append(gyve_sum/shikou)
+    gyogyo.append(gygy_sum/shikou)
+    
+plt.plot(zigenn, naiseki, marker = "o", label = "Inner", c = "0.0")
+plt.plot(zigenn, gyovec, marker = "o", label = "Mat Vec", c = "0.5")
+plt.plot(zigenn, gyogyo, marker = "o", label = "Mat Mat", c = "0.7")
+plt.title("Elapsed time of Matrix and Vector Operations")
+plt.xlabel("Dimension size, n")
+plt.ylabel("Elapsed Time(sec)")
+plt.yscale("log")
+plt.xscale("log")
+plt.legend(loc = "upper right")
+plt.show()  
